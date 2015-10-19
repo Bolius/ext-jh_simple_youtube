@@ -1,0 +1,37 @@
+plugin.tx_jhsimpleyoutube {
+	view {
+		# cat=plugin.jh_simple_youtube/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:jh_simple_youtube/Resources/Private/Templates/
+		# cat=plugin.jh_simple_youtube/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:jh_simple_youtube/Resources/Private/Partials/
+		# cat=plugin.jh_simple_youtube/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:jh_simple_youtube/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.jh_simple_youtube//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		# cat=plugin.jh_simple_youtube/dims/010; type=int+; label=default width of video in px
+		width=560
+		# cat=plugin.jh_simple_youtube/dims/011; type=int+; label=default height of video in px
+		height=315
+		# cat=plugin.jh_simple_youtube/enable/020; type=boolean; label=embed video with html5 by default
+		html5 = 1
+		# cat=plugin.jh_simple_youtube/file/030; type=file; label=Path to css file
+		cssFile = EXT:jh_simple_youtube/Resources/Public/css/tx_jhsimpleyoutube.css
+
+		defaultPlayerParameters {
+			# cat=plugin.jh_simple_youtube/params/110; type=options[1,3]; label= IV load policy: Setting to 1 will cause video annotations to be shown by default, whereas setting to 3 will cause video annotations to not be shown by default.
+			iv_load_policy = 1
+			# cat=plugin.jh_simple_youtube/params/120; type=options[0,1]; label=Show info:Values: 0 or 1. The parameter's default value is 1. If you set the parameter value to 0, then the player will not display information like the video title and uploader before the video starts playing.
+			showinfo = 1
+			# cat=plugin.jh_simple_youtube/params/130; type=options[0,1,2]; label=Controls: Values: 0, 1, or 2. Default is 1. This parameter indicates whether the video player controls will display
+			controls = 1
+			# cat=plugin.jh_simple_youtube/params/140; type=options[0,1]; label=Modest branding: This parameter lets you use a YouTube player that does not show a YouTube logo. Set the parameter value to 1 to prevent the YouTube logo from displaying in the control bar.
+			modestbranding = 0
+			# cat=plugin.jh_simple_youtube/params/150; type=options[red,white]; label=Color: Valid parameter values are red and white.
+			color = red
+		}
+	}
+}

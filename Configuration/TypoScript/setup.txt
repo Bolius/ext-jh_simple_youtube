@@ -1,0 +1,27 @@
+plugin.tx_jhsimpleyoutube {
+	view {
+		templateRootPath = {$plugin.tx_jhsimpleyoutube.view.templateRootPath}
+		partialRootPath = {$plugin.tx_jhsimpleyoutube.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_jhsimpleyoutube.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_jhsimpleyoutube.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings {
+		width = {$plugin.tx_jhsimpleyoutube.settings.width}
+		height = {$plugin.tx_jhsimpleyoutube.settings.height}
+		html5 = {$plugin.tx_jhsimpleyoutube.settings.html5}
+		cssFile = {$plugin.tx_jhsimpleyoutube.settings.cssFile}
+		defaultPlayerParameters {
+			iv_load_policy = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.iv_load_policy}
+			showinfo = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.showinfo}
+			controls = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.controls}
+			modestbranding = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.modestbranding}
+			color = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.color}
+		}
+	}
+}
