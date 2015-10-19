@@ -29,6 +29,15 @@ ChangeLog
 
 
  - :Version:
+         0.4.1
+
+   :Changes:
+         \* Added Support for TYPO3 CMS 7.6
+
+         \* Multiple small bugfixes
+
+
+ - :Version:
          0.4.0
 
    :Changes:

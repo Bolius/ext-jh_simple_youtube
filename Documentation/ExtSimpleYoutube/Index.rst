@@ -22,7 +22,7 @@ Language: en
 
 Keywords: youtube, mobile, html5
 
-Copyright 2013-2014, Jonathan Heilmann, <mail@jonathan-heilmann.de>
+Copyright 2013-2015, Jonathan Heilmann, <mail@jonathan-heilmann.de>
 
 This document is published under the Open Content License
 

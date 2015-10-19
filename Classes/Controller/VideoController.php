@@ -1,10 +1,13 @@
 <?php
 namespace TYPO3\JhSimpleYoutube\Controller;
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Jonathan Heilmann <mail@jonathan-heilmann.de>, Webprogrammierung Jonathan Heilmann
+ *  (c) 2013-2015 Jonathan Heilmann <mail@jonathan-heilmann.de>, Webprogrammierung Jonathan Heilmann
  *
  *  All rights reserved
  *
@@ -25,8 +28,6 @@ namespace TYPO3\JhSimpleYoutube\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -35,15 +36,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class VideoController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
-	/**
-	 * videoRepository
-	 *
-	 * @var \TYPO3\JhSimpleYoutube\Domain\Repository\VideoRepository
-	 * @inject
-	 */
-	protected $videoRepository;
+class VideoController extends ActionController {
 
 	/**
 	 * action show
@@ -54,8 +47,8 @@ class VideoController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		$viewAssign = array();
 
 		// add css file
-		if(!empty($this->settings[cssFile])) {
-			$filename = $this->settings[cssFile];
+		if(!empty($this->settings['cssFile'])) {
+			$filename = $this->settings['cssFile'];
 			// resolve EXT: to path
 			if (substr($filename, 0, 4) == 'EXT:') {
 				list($extKey, $local) = explode('/', substr($filename, 4), 2);
@@ -68,13 +61,13 @@ class VideoController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		}
 
 		// get default settings from template-setup
-		$viewAssign['width'] = $this->settings[width];
-		$viewAssign['height'] = $this->settings[height];
+		$viewAssign['width'] = $this->settings['width'];
+		$viewAssign['height'] = $this->settings['height'];
 
 		// get settings flexform (flexform overrides template-setup if available)
 		$viewAssign['id'] = $this->settings[id];
-		if(!empty($this->settings[flex_width])) {$viewAssign['width'] = $this->settings[flex_width];}
-		if(!empty($this->settings[flex_height])) {$viewAssign['height'] = $this->settings[flex_height];}
+		if(!empty($this->settings['flex_width'])) {$viewAssign['width'] = $this->settings['flex_width'];}
+		if(!empty($this->settings['flex_height'])) {$viewAssign['height'] = $this->settings['flex_height'];}
 
 		// calculate padding-bottom inline-style for video-container
 		$viewAssign['paddingBottom'] = ($viewAssign['height'] / $viewAssign['width']) * 100;
@@ -84,7 +77,7 @@ class VideoController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		$enableHtml5 = false;
 		$viewAssign['allowfullscreen'] = '';
 		// html5
-		if(($this->settings[flex_html5] == -1 && $this->settings[html5] == 1) || $this->settings[flex_html5] == 1) {
+		if(($this->settings['flex_html5'] == -1 && $this->settings['html5'] == 1) || $this->settings['flex_html5'] == 1) {
 			$playerParameters .= '&html5=1';
 			$enableHtml5 = true;
 		}
@@ -99,9 +92,9 @@ class VideoController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 			}
 		}*/
 		// fs (fullscreen)
-		if (!$enableHtml5 && !$this->settings[allowfullscreen]) {
+		if (!$enableHtml5 && !$this->settings['allowfullscreen']) {
 			$playerParameters .= '&fs=0';
-		} else if ($enableHtml5 && $this->settings[allowfullscreen]){
+		} else if ($enableHtml5 && $this->settings['allowfullscreen']){
 			$viewAssign['allowfullscreen'] = 'allowfullscreen';
 		}
 		// rel (related videos)
