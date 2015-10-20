@@ -29,6 +29,13 @@ ChangeLog
 
 
  - :Version:
+         0.4.2
+
+   :Changes:
+         \* Fixed dependencies
+
+
+ - :Version:
          0.4.1
 
    :Changes:
