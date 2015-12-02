@@ -23,5 +23,6 @@ plugin.tx_jhsimpleyoutube {
 			modestbranding = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.modestbranding}
 			color = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.color}
 		}
+		youtubeUrl = https://www.youtube.com/embed/
 	}
 }

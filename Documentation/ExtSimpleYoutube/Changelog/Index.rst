@@ -29,6 +29,13 @@ ChangeLog
 
 
  - :Version:
+         0.5.0
+
+   :Changes:
+         \* Moved youtube URL to TypoScript setup
+
+
+ - :Version:
          0.4.2
 
    :Changes:
