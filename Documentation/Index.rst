@@ -17,10 +17,10 @@ EXT: Simple Youtube
 ===================
 
 :Created:
-      2010-02-18 17:03:03
+      2010-02-18 17:03
 
 :Changed:
-      2019-10-19 19:36:06
+      2016-05-10 12:36
 
 :Classification:
       jh_simple_youtube

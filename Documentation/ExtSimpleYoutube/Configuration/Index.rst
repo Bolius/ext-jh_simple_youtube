@@ -32,4 +32,5 @@ editor.
    :glob:
 
    Reference/Index
+   TSSetup/Index
 

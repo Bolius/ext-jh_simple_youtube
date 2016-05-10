@@ -20,9 +20,11 @@ Extension Key: jh\_simple\_youtube
 
 Language: en
 
+Version: 0.5.0
+
 Keywords: youtube, mobile, html5
 
-Copyright 2013-2015, Jonathan Heilmann, <mail@jonathan-heilmann.de>
+Copyright 2013-2016, Jonathan Heilmann, <mail@jonathan-heilmann.de>
 
 This document is published under the Open Content License
 
