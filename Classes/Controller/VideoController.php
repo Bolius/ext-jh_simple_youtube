@@ -1,13 +1,10 @@
 <?php
 namespace TYPO3\JhSimpleYoutube\Controller;
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013-2015 Jonathan Heilmann <mail@jonathan-heilmann.de>, Webprogrammierung Jonathan Heilmann
+ *  (c) 2013-2016 Jonathan Heilmann <mail@jonathan-heilmann.de>, Webprogrammierung Jonathan Heilmann
  *
  *  All rights reserved
  *
@@ -28,6 +25,9 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  *
