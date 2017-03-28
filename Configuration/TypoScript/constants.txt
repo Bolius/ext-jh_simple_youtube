@@ -33,5 +33,14 @@ plugin.tx_jhsimpleyoutube {
 			# cat=plugin.jh_simple_youtube/params/150; type=options[red,white]; label=Color: Valid parameter values are red and white.
 			color = red
 		}
+
+		#cat=plugin.jh_simple_youtube/cache/20; type=string; label=Your Google API key;
+		apiKey =
+		#cat=plugin.jh_simple_youtube/cache/20; type=int+; label=Cache lifetime in seconds for video resources;
+		cachelifetimeSeconds = 7200
+		#cat=plugin.jh_simple_youtube/cache/20; type=string; label=Video resource parts to import (Comma-separated list);
+		videoResourceParts = snippet,contentDetails
+		#cat=plugin.jh_simple_youtube/cache/20; type=string; label=Video resource fields to import;
+		videoResourceFields = items(id,snippet(title,thumbnails(default),publishedAt,description),contentDetails(duration))
 	}
 }

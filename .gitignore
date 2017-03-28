@@ -27,3 +27,7 @@ $RECYCLE.BIN/
 # all OS
 ##
 *.bak
+
+.idea/*
+.idea/vcs.xml
+.idea/webResources.xml

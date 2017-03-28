@@ -18,7 +18,7 @@
 To-Do list
 ----------
 
-Nothing to do. Please contat me if you have an idea (Jonathan Heilmann
+Nothing to do. Please contact me if you have an idea (Jonathan Heilmann
 <mail@jonathan-heilmann.de>).
 
 

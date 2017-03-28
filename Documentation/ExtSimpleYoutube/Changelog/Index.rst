@@ -29,6 +29,13 @@ ChangeLog
 
 
  - :Version:
+         0.6.0
+
+   :Changes:
+         \* Added schema.org support (requires a google API key set in constant editor)
+
+
+ - :Version:
          0.5.0
 
    :Changes:

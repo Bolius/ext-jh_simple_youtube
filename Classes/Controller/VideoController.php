@@ -4,7 +4,7 @@ namespace TYPO3\JhSimpleYoutube\Controller;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013-2016 Jonathan Heilmann <mail@jonathan-heilmann.de>, Webprogrammierung Jonathan Heilmann
+ *  (c) 2013-2017 Jonathan Heilmann <mail@jonathan-heilmann.de>
  *
  *  All rights reserved
  *
@@ -25,9 +25,11 @@ namespace TYPO3\JhSimpleYoutube\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  *
@@ -38,11 +40,25 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  */
 class VideoController extends ActionController {
 
-	/**
-	 * action show
-	 *
-	 * @return void
-	 */
+    /**
+     *
+     */
+    private $extensionKey = 'jh_simple_youtube';
+
+    /**
+     * ImportVideoResource
+     *
+     * @var \JonathanHeilmann\JhSimpleYoutube\Services\ImportVideoResource
+     * @inject
+     */
+    protected $importVideoResource = null;
+
+    /**
+     * action show
+     *
+     * @return void
+     * @throws \Exception
+     */
 	public function showAction() {
 		$viewAssign = array();
 
@@ -65,7 +81,7 @@ class VideoController extends ActionController {
 		$viewAssign['height'] = $this->settings['height'];
 
 		// get settings flexform (flexform overrides template-setup if available)
-		$viewAssign['id'] = $this->settings[id];
+		$viewAssign['id'] = $this->settings['id'];
 		if(!empty($this->settings['flex_width'])) {$viewAssign['width'] = $this->settings['flex_width'];}
 		if(!empty($this->settings['flex_height'])) {$viewAssign['height'] = $this->settings['flex_height'];}
 
@@ -121,9 +137,47 @@ class VideoController extends ActionController {
 			$viewAssign['playerParameters'] = '?' . substr($playerParameters, 1);
 		}
 
+		// Get video resources
+        $viewAssign['videoResources'] = $this->getVideoResources();
+
 		// assign array to fluid-template
 		$this->view->assignMultiple($viewAssign);
 	}
+
+    /**
+     * Gets video resources
+     *
+     * @return mixed
+     */
+	private function getVideoResources()
+    {
+        if (!$this->settings['apiKey'])
+            return false;
+
+        $cObj = $this->configurationManager->getContentObject();
+
+        $tags = array('pageId_' . $cObj->data['pid'], 'ceUid_' . $cObj->data['uid']);
+        $cacheIdentifier = $this->importVideoResource->getCacheIdentifier($tags, $this->settings);
+        if (($videoResources = GeneralUtility::makeInstance(CacheManager::class)->getCache($this->extensionKey)->get($cacheIdentifier)) === false)
+        {
+            $path = 'https://www.googleapis.com/youtube/v3/videos'.
+                '?id=' . $this->settings['id'] .
+                '&key=' . $this->settings['apiKey'] .
+                '&part=' . $this->settings['videoResourceParts'] .
+                ($this->settings['videoResourceFields'] ? '&fields=' . $this->settings['videoResourceFields'] : '');
+
+            $importResult = $this->importVideoResource->import($path);
+
+            if ($importResult['success'] === true) {
+                $videoResources = json_decode($importResult['import'], true);
+                GeneralUtility::makeInstance(CacheManager::class)
+                    ->getCache($this->extensionKey)
+                    ->set($cacheIdentifier, $videoResources, $tags, $this->settings['cachelifetimeSeconds']);
+            }
+        }
+
+        return $videoResources;
+    }
 
 	/**
 	 * wrapCssFile

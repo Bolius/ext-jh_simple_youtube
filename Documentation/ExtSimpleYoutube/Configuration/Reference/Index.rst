@@ -157,6 +157,58 @@ Reference
          red
 
 
+ - :Property:
+         apiKey
+
+   :Data type:
+         string
+
+   :Description:
+         Your Google API key used to fetch video resources (see https://developers.google.com/youtube/v3/getting-started for instructions)
+
+   :Default:
+         \
+
+
+ - :Property:
+         cachelifetimeSeconds
+
+   :Data type:
+            int+
+
+      :Description:
+            Cache lifetime in seconds for video resources
+
+      :Default:
+            7200
+
+
+ - :Property:
+         videoResourceParts
+
+   :Data type:
+            string
+
+      :Description:
+            Video resource parts to import (Comma-separated list) (see https://developers.google.com/youtube/v3/getting-started#part)
+
+      :Default:
+            snippet,contentDetails
+
+
+ - :Property:
+         videoResourceFields
+
+   :Data type:
+            string
+
+      :Description:
+            Video resource fields to import (see https://developers.google.com/youtube/v3/getting-started#fields)
+
+      :Default:
+            items(id,snippet(title,thumbnails(default),publishedAt,description),contentDetails(duration))
+
+
 .. ###### END~OF~TABLE ######
 
 [tsref:plugin.tx\_jhsimpleyoutube.settings]
