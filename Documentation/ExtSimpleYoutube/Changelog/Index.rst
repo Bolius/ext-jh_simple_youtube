@@ -36,6 +36,10 @@ ChangeLog
 
          \* Added TYPO3 8 LTS and dropped TYPO3 CMS 6 LTS support
 
+         \* Added compose support
+
+         \* Fixed Vendor: Changed from `TYPO3` to `JonathanHeilmann`
+
 
  - :Version:
          0.5.0
