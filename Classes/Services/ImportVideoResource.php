@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013-2017 Jonathan Heilmann <mail@jonathan-heilmann.de>
+ *  (c) 2013-2018 Jonathan Heilmann <mail@jonathan-heilmann.de>
  *
  *  All rights reserved
  *
