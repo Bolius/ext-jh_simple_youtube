@@ -33,6 +33,7 @@ ChangeLog
 
    :Changes:
          \* Added schema.org support (requires a google API key set in constant editor)
+
          \* Added TYPO3 8 LTS and dropped TYPO3 CMS 6 LTS support
 
 
