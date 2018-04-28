@@ -14,7 +14,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'title' => 'Simple Youtube',
 	'description' => 'Simply add a youtube-video as a responsive content-element. The embedded video is compatible to mobile devices (html5).',
 	'category' => 'plugin',
-	'version' => '0.5.0',
+	'version' => '0.6.0',
 	'state' => 'stable',
 	'uploadfolder' => true,
 	'createDirs' => '',
@@ -26,7 +26,7 @@ $EM_CONF[$_EXTKEY] = array (
 	array (
 		'depends' =>
 		array (
-			'typo3' => '6.2.0-7.6.99',
+			'typo3' => '7.6.0-8.7.99',
 		),
 		'conflicts' =>
 		array (

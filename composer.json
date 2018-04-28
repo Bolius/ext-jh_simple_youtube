@@ -1,0 +1,29 @@
+{
+  "name": "jonathanheilmann/jh_simple_youtube",
+  "type": "typo3-cms-extension",
+  "description": "Simply add a youtube-video as a responsive content-element. The embedded video is compatible to mobile devices (html5).",
+  "authors": [
+    {
+      "name": "Jonathan Heilmann",
+      "email": "mail@jonathan-heilmann.de"
+    }
+  ],
+  "version": "0.6.0",
+  "license": "GPL-2.0+",
+  "keywords": [
+    "youtube",
+    "mobile",
+    "html5"
+  ],
+  "require": {
+    "typo3/cms-core": "~7.6||~8.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "JonathanHeilmann\\JhSimpleYoutube\\": "Classes/"
+    }
+  },
+  "replace": {
+    "jh_simple_youtube": "*"
+  }
+}

@@ -5,8 +5,11 @@
   <f:flashMessages />
 
   <div class="video-wrapper" style="width: {width}px;">
-      <div class="video-container" style="padding-bottom: {paddingBottom}%;">
+      <div class="video-container" style="padding-bottom: {paddingBottom}%;" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
           <iframe class="tx_jhsimpleyoutube" width="{width}" height="{height}" src="{settings.youtubeUrl}{id}{playerParameters}" {allowfullscreen}></iframe>
+          <f:if condition="{videoResources}">
+              <f:render partial="Video/VideoObjectSchema" arguments="{videoResources: videoResources.items.0, id: id, settings: settings, playerParameters: playerParameters}" />
+          </f:if>
       </div>
   </div>
 

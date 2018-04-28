@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'TYPO3.' . $_EXTKEY,
+	'JonathanHeilmann.' . $_EXTKEY,
 	'Pi1',
 	array(
 		'Video' => 'show',
@@ -15,4 +15,12 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
-?>
+// Caching
+if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY]))
+{
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY] = array();
+}
+if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY]['groups']))
+{
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY]['groups'] = array('pages', 'all');
+}

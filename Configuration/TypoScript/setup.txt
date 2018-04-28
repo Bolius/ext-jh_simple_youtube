@@ -24,5 +24,10 @@ plugin.tx_jhsimpleyoutube {
 			color = {$plugin.tx_jhsimpleyoutube.settings.defaultPlayerParameters.color}
 		}
 		youtubeUrl = https://www.youtube.com/embed/
+
+		apiKey = {$plugin.tx_jhsimpleyoutube.settings.apiKey}
+		cachelifetimeSeconds = {$plugin.tx_jhsimpleyoutube.settings.cachelifetimeSeconds}
+		videoResourceParts = {$plugin.tx_jhsimpleyoutube.settings.videoResourceParts}
+		videoResourceFields = {$plugin.tx_jhsimpleyoutube.settings.videoResourceFields}
 	}
 }
