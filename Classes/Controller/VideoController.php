@@ -29,7 +29,6 @@ use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  *
@@ -114,7 +113,7 @@ class VideoController extends ActionController {
 			$viewAssign['allowfullscreen'] = 'allowfullscreen';
 		}
 		// rel (related videos)
-		if($this->settings[rel] == 0) {$playerParameters .= '&rel=0';}
+		if($this->settings['rel'] == 0) {$playerParameters .= '&rel=0';}
 		//start (start time in seconds)
 		/*if(!empty($this->settings[start])) {
 			if(strstr($this->settings[start], ':')) {
