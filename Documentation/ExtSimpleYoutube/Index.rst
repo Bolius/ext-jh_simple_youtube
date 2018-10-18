@@ -20,7 +20,7 @@ Extension Key: jh\_simple\_youtube
 
 Language: en
 
-Version: 0.6.0
+Version: 0.7.0
 
 Keywords: youtube, mobile, html5
 

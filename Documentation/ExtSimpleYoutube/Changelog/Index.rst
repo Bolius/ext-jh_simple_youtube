@@ -29,6 +29,13 @@ ChangeLog
 
 
  - :Version:
+         0.7.0
+
+   :Changes:
+         \* Add TYPO3 9 LTS support (#10)
+
+
+ - :Version:
          0.6.0
 
    :Changes:
