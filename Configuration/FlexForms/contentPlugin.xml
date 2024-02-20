@@ -63,7 +63,7 @@
 										<numIndex index="1">0</numIndex>
 									</numIndex>
 								</items>
-							</config>
+							<renderType>selectSingle</renderType></config>
 						</TCEforms>
 					</settings.flex_html5>
 					<settings.rel>

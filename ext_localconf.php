@@ -1,13 +1,13 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
 	die ('Access denied.');
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'JonathanHeilmann.' . $_EXTKEY,
+	'JhSimpleYoutube',
 	'Pi1',
 	array(
-		'Video' => 'show',
+		\JonathanHeilmann\JhSimpleYoutube\Controller\VideoController::class => 'show',
 	),
 	// non-cacheable actions
 	array(
@@ -16,11 +16,11 @@ if (!defined('TYPO3_MODE')) {
 );
 
 // Caching
-if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY]))
+if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['jh_simple_youtube']))
 {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY] = array();
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['jh_simple_youtube'] = array();
 }
-if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY]['groups']))
+if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['jh_simple_youtube']['groups']))
 {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY]['groups'] = array('pages', 'all');
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['jh_simple_youtube']['groups'] = array('pages', 'all');
 }

@@ -24,7 +24,9 @@ namespace JonathanHeilmann\JhSimpleYoutube\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use JonathanHeilmann\JhSimpleYoutube\Services\ImportVideoResource;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -47,8 +49,7 @@ class VideoController extends ActionController {
     /**
      * ImportVideoResource
      *
-     * @var \JonathanHeilmann\JhSimpleYoutube\Services\ImportVideoResource
-     * @inject
+     * @var ImportVideoResource
      */
     protected $importVideoResource = null;
 
@@ -58,8 +59,11 @@ class VideoController extends ActionController {
      * @return void
      * @throws \Exception
      */
-	public function showAction() {
+	public function showAction(): ResponseInterface {
 		$viewAssign = array();
+
+        /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
+        $pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
 
 		// add css file
 		if(!empty($this->settings['cssFile'])) {
@@ -69,10 +73,11 @@ class VideoController extends ActionController {
 				list($extKey, $local) = explode('/', substr($filename, 4), 2);
 				$filename = '';
 				if (strcmp($extKey, '') && ExtensionManagementUtility::isLoaded($extKey) && strcmp($local, '')) {
-					$filename = ExtensionManagementUtility::siteRelPath($extKey) . $local;
+					$filename = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath($extKey)) . $local;
 				}
 			}
-			if(!empty($filename)) $this->response->addAdditionalHeaderData($this->wrapCssFile($filename));
+            if(!empty($filename)) $pageRenderer->addHeaderData($this->wrapCssFile($filename));
+
 		}
 
 		// get default settings from template-setup
@@ -141,6 +146,8 @@ class VideoController extends ActionController {
 
 		// assign array to fluid-template
 		$this->view->assignMultiple($viewAssign);
+
+        return $this->htmlResponse();
 	}
 
     /**
@@ -189,5 +196,10 @@ class VideoController extends ActionController {
 		$cssFile = GeneralUtility::createVersionNumberedFilename($cssFile);
 		return '<link rel="stylesheet" type="text/css" href="'.htmlspecialchars($cssFile).'" media="screen" />';
 	}
+
+    public function injectImportVideoResource(ImportVideoResource $importVideoResource): void
+    {
+        $this->importVideoResource = $importVideoResource;
+    }
 
 }

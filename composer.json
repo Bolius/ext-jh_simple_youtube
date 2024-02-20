@@ -25,5 +25,10 @@
   },
   "replace": {
     "jh_simple_youtube": "*"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "jh_simple_youtube"
+    }
   }
 }
